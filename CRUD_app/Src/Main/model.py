@@ -23,7 +23,7 @@ class Profile(db.Model):
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    u_id = db.Column(db.Integer, ForeignKey=True)
+    u_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
     text = db.Column(db.String(1024))
     profiles = db.relationship('Profile', backref=db.backref('blogs'))
     include_columns = ['id', 'username', 'email']
